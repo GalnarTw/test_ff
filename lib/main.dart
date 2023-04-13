@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return   MultiBlocProvider(
 providers: [
-  BlocProvider<MarketCubit>(create: (context)=> sl<MarketCubit>()..loadMarket,)
+  BlocProvider<MarketCubit>(create: (context)=> sl<MarketCubit>()..testMarket(),)
   ],
       child: const MaterialApp(
             debugShowCheckedModeBanner: false,

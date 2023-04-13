@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/cub.dart';
+import '../cubit/cub_stat.dart';
 import '../model/models.dart';
 
 Widget cart(
-    int? malId,
-    String? url,
-    String? title,
-    int? episodes,
-    double?  score,
-    int? year,
-    String? genres,
-    ){
- 
-        return
-    
-      // Scaffold(
-      //   body:
-            // BlocBuilder<MarketCubit, MarketCubitState>(builder: (context, state) {
-            //   List<Anime> marketanime = [];
-            //   if (state is MarketLoading) {
-            //     return const Center(
-            //       child: CircularProgressIndicator(),
-            //     );
-            //   } else if (state is MarketLoaded) {
-            //     marketanime = state.animeList;
-            //   } else {}
-            //   return
-
-            Padding(
+  int? malId,
+  String? url,
+  String? title,
+  int? episodes,
+  double? score,
+  int? year,
+  String? genres,
+) {
+  return Scaffold(
+    body: BlocBuilder<MarketCubit, MarketCubitState>(
+      builder: (context, state) {
+        List<Anime> marketanime = [];
+        if (state is MarketLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is MarketLoaded) {
+          marketanime = state.animeList;
+        } else {}
+        print('!!! $marketanime');
+        return Padding(
           padding: const EdgeInsets.fromLTRB(4, 20, 4, 4),
           child: Container(
             decoration: BoxDecoration(
@@ -36,7 +35,8 @@ Widget cart(
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
                 BoxShadow(
-                  color: const Color.fromARGB(255, 133, 16, 195).withOpacity(0.5),
+                  color:
+                      const Color.fromARGB(255, 133, 16, 195).withOpacity(0.5),
                   spreadRadius: 6,
                   blurRadius: 12,
                   offset: const Offset(0, 0),
@@ -106,11 +106,11 @@ Widget cart(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                         Text(
+                        Text(
                           textAlign: TextAlign.center,
                           title!,
                           style: const TextStyle(
-                              color:  Color.fromARGB(255, 102, 46, 207),
+                              color: Color.fromARGB(255, 102, 46, 207),
                               fontWeight: FontWeight.w700,
                               fontSize: 30),
                         ),
@@ -120,18 +120,16 @@ Widget cart(
                             const Text(
                               'жанр:',
                               style: TextStyle(
-                                  color:
-                                       Color.fromARGB(255, 102, 46, 207),
+                                  color: Color.fromARGB(255, 102, 46, 207),
                                   fontWeight: FontWeight.w700,
                                   fontSize: 20),
                             ),
-                             Padding(
+                            Padding(
                               padding: const EdgeInsets.only(left: 5),
                               child: Text(
                                 '$genres',
                                 style: const TextStyle(
-                                    color:
-                                        Color.fromARGB(255, 102, 46, 207),
+                                    color: Color.fromARGB(255, 102, 46, 207),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 20),
                               ),
@@ -140,27 +138,25 @@ Widget cart(
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children:[
-                            Text(
+                          children: [
+                            const Text(
                               'год:',
                               style: TextStyle(
-                                  color:
-                                      const Color.fromARGB(255, 102, 46, 207),
+                                  color: Color.fromARGB(255, 102, 46, 207),
                                   fontWeight: FontWeight.w700,
                                   fontSize: 15),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: Text(
                                 '$year',
-                                style: TextStyle(
-                                    color:
-                                        const Color.fromARGB(255, 102, 46, 207),
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 102, 46, 207),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 15),
                               ),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 20),
                               child: Icon(
                                 Icons.star,
@@ -169,13 +165,11 @@ Widget cart(
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 3),
+                              padding: const EdgeInsets.only(left: 3),
                               child: Text(
                                 '$score',
-                               
-                                style: TextStyle(
-                                    color:
-                                        const Color.fromARGB(255, 102, 46, 207),
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 102, 46, 207),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 25),
                               ),
@@ -189,10 +183,10 @@ Widget cart(
               ],
             ),
           ),
-        // ),
-      // ),
-      // },
-      // ),
-    );
+        );
+      },
+    ),
+  );
 }
+
 var g = ('https://cdn.myanimelist.net/images/anime/4/19644.jpg');

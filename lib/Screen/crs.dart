@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromARGB(255, 102, 46, 207),
         automaticallyImplyLeading: false,
       ),
-      body:BlocBuilder<MarketCubit, MarketCubitState>(
+      body: BlocBuilder<MarketCubit, MarketCubitState>(
         builder: (context, state) {
           List<Anime> marketAnime = [];
           if (state is MarketLoading) {
@@ -32,24 +32,22 @@ class _HomePageState extends State<HomePage> {
             );
           } else if (state is MarketLoaded) {
             marketAnime = state.animeList;
-          } else if(state is MarketEmpty){}
+          } else if (state is MarketEmpty) {}
+          print('!!! $marketAnime');
           return Column(
             children: [
               Expanded(
                 child: ListView(
+                  itemExtent: 50,
                   children: [
-                    
-                    // cart(
-                    // marketAnime[0].data![1].malId,
-                    //   marketAnime[0].data![1].url,
-                    //   marketAnime[0].data![1].title,
-                    //   marketAnime[0].data![1].episodes,
-                    //   marketAnime[0].data![1].score,
-                    //   marketAnime[0].data![1].year,
-                    //   marketAnime[0].data![1].genres,
-                      
-                    // ),
-                    // cart(
+                    cart(
+                    marketAnime[0].data![1].malId,
+                      marketAnime[0].data![1].url,
+                      marketAnime[0].data![1].title,
+                      marketAnime[0].data![1].episodes,
+                      marketAnime[0].data![1].score,
+                      marketAnime[0].data?[1].year,
+                      marketAnime[0].data?[1].genres,
 
                     // ),
                     // cart(
@@ -58,6 +56,9 @@ class _HomePageState extends State<HomePage> {
                     // cart(
 
                     // ),
+                    // cart(
+
+                    ),
                     const DefaultTabController(
                       length: 5,
                       child: SizedBox(
