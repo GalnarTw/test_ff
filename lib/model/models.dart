@@ -1,5 +1,7 @@
 class Anime{
 List<Data>? data;
+
+List<Images>? imag;
 Anime({this.data});
 Anime.fromJson(Map<String, dynamic>json){
     if (json['data'] != null) {
@@ -7,8 +9,9 @@ Anime.fromJson(Map<String, dynamic>json){
       json['data'].forEach((v) {
         data!.add(Data.fromJson(v));
       });
-    }
+    } 
 }
+
 }
 
 
@@ -20,11 +23,12 @@ class Data {
   double?  score;
   int?  year;
   String?genres;
+  Images? imagesg;
   Data({
     this.malId,
     this.url,
     this.title,
-
+this.imagesg,
     this.episodes,
     this.score,
     this.genres,
@@ -37,6 +41,9 @@ class Data {
     episodes = json['episodes'];
     score = json['score'];
     year = json['year'];
+   
+     imagesg =
+        json['images'] != null ? Images.fromJson(json['images']) : null;
 
   }
 }

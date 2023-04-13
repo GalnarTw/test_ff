@@ -18,13 +18,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 102, 46, 207),
-        automaticallyImplyLeading: false,
-      ),
-      body: BlocBuilder<MarketCubit, MarketCubitState>(
-        builder: (context, state) {
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 102, 46, 207),
+          automaticallyImplyLeading: false,
+        ),
+        body: BlocBuilder<MarketCubit, MarketCubitState>(
+            builder: (context, state) {
           List<Anime> marketAnime = [];
           if (state is MarketLoading) {
             return const Center(
@@ -34,62 +34,50 @@ class _HomePageState extends State<HomePage> {
             marketAnime = state.animeList;
           } else if (state is MarketEmpty) {}
           print('!!! $marketAnime');
+          print(marketAnime[0].imag?[0].jpg!.imageUrl);
           return Column(
             children: [
               Expanded(
-                child: ListView(
-                  itemExtent: 50,
-                  children: [
-                    cart(
-                    marketAnime[0].data![1].malId,
-                      marketAnime[0].data![1].url,
-                      marketAnime[0].data![1].title,
-                      marketAnime[0].data![1].episodes,
-                      marketAnime[0].data![1].score,
-                      marketAnime[0].data?[1].year,
-                      marketAnime[0].data?[1].genres,
-
-                    // ),
-                    // cart(
-
-                    // ),
-                    // cart(
-
-                    // ),
-                    // cart(
-
+                child: ListView.builder(
+                  itemCount: marketAnime[0].data!.length,
+                  itemBuilder: (context, index) => cart(
+                    marketAnime[0].data![index].malId,
+                    marketAnime[0].data![index].url,
+                    marketAnime[0].data![index].title,
+                    marketAnime[0].data![index].episodes,
+                    marketAnime[0].data![index].score,
+                    marketAnime[0].data?[index].year,
+                    marketAnime[0].data?[index].genres,
+                    marketAnime[0].data?[index].imagesg!.jpg!.imageUrl,
+                  ),
+                ),
+              ),
+              const DefaultTabController(
+                length: 5,
+                child: SizedBox(
+                  height: 40,
+                  child: TabBar(
+                    indicatorPadding: EdgeInsets.symmetric(
+                      horizontal: 5,
+                      vertical: 1,
                     ),
-                    const DefaultTabController(
-                      length: 5,
-                      child: SizedBox(
-                        height: 40,
-                        child: TabBar(
-                          indicatorPadding: EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 1,
-                          ),
-                          indicatorColor: Color.fromARGB(255, 102, 46, 207),
-                          indicatorWeight: 3,
-                          unselectedLabelColor: Colors.grey,
-                          labelColor: Color.fromARGB(255, 102, 46, 207),
-                          tabs: [
-                            Text('1'),
-                            Text('2'),
-                            Text('3'),
-                            Text('4'),
-                            Text('5'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                    indicatorColor: Color.fromARGB(255, 102, 46, 207),
+                    indicatorWeight: 3,
+                    unselectedLabelColor: Colors.grey,
+                    labelColor: Color.fromARGB(255, 102, 46, 207),
+                    tabs: [
+                      Text('1'),
+                      Text('2'),
+                      Text('3'),
+                      Text('4'),
+                      Text('5'),
+                    ],
+                  ),
                 ),
               ),
             ],
           );
-        },
-      ),
-    );
+        }));
   }
 }
 

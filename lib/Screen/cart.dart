@@ -14,9 +14,12 @@ Widget cart(
   double? score,
   int? year,
   String? genres,
+  String? imageg
 ) {
-  return Scaffold(
-    body: BlocBuilder<MarketCubit, MarketCubitState>(
+  return
+  //  Scaffold(
+  //   body:
+     BlocBuilder<MarketCubit, MarketCubitState>(
       builder: (context, state) {
         List<Anime> marketanime = [];
         if (state is MarketLoading) {
@@ -71,7 +74,7 @@ Widget cart(
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(7),
                               child: Image.network(
-                                g,
+                                imageg!,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -88,7 +91,7 @@ Widget cart(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text('$episodes, Серий',
+                                  Text('$episodes Серий',
                                       style: const TextStyle(
                                           fontSize: 19, color: Colors.white38)),
                                 ],
@@ -185,8 +188,8 @@ Widget cart(
           ),
         );
       },
-    ),
-  );
+     );
+  // );
 }
 
 var g = ('https://cdn.myanimelist.net/images/anime/4/19644.jpg');
