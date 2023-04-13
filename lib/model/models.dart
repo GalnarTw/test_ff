@@ -9,8 +9,6 @@ Anime.fromJson(Map<String, dynamic>json){
       });
     }
 }
-
-  void fold(void Function(dynamic error) param0, void Function(dynamic character) param1) {}
 }
 
 
