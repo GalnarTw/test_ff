@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState(){
     pageIndex = 0;
-    controllerTabs = TabController(length: widget.b ~/ 6 + 1, vsync: this);
+    controllerTabs = TabController(length: widget.b ~/ 8 + 1, vsync: this);
     // controllerTabs = TabController(length: 5, vsync: this);
     controllerPages = PageController();
      super.initState();
@@ -78,14 +78,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       itemBuilder: (_, list) {
                         return ListView.builder(
                             itemCount:
-                                6 * (pageIndex + 1) > b ? b - (pageIndex * 6) : 6,
+                                8 * (pageIndex + 1) > b ? b - (pageIndex * 8) : 8,
                             itemBuilder: (
                               context,
                               Pindex,
                               
                             ) {
                               if (pageIndex > 0) {
-                                Pindex = Pindex + (6 * pageIndex);
+                                Pindex = Pindex + (8 * pageIndex);
                               }
                               return cart(
                                 marketAnime[0].data![Pindex].malId,
@@ -130,25 +130,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       unselectedLabelColor: Colors.grey,
                       labelColor: const Color.fromARGB(255, 102, 46, 207),
                       
-                      tabs: const [
-                Text('1', style: TextStyle(color: Colors.white, fontSize: 25)),
-                Text('2', style: TextStyle(color: Colors.white, fontSize: 25)),
-                Text('3', style: TextStyle(color: Colors.white, fontSize: 25)),
-                Text('4', style: TextStyle(color: Colors.white, fontSize: 25)),
-                Text('5', style: TextStyle(color: Colors.white, fontSize: 25)),
-              ],
+              //         tabs: const [
+              //   Text('1', style: TextStyle(color: Colors.white, fontSize: 25)),
+              //   Text('2', style: TextStyle(color: Colors.white, fontSize: 25)),
+              //   Text('3', style: TextStyle(color: Colors.white, fontSize: 25)),
+              //   Text('4', style: TextStyle(color: Colors.white, fontSize: 25)),
+              //   Text('5', style: TextStyle(color: Colors.white, fontSize: 25)),
+              // ],
                       
                       
                       
                       
-                      // tabs:
+                      tabs:
 
 
-                      //  List.generate(
-                      //     b ~/ 6 + 1,
-                      //     (index) => Text(
-                      //           '${index + 1}',
-                      //         )),
+                       List.generate(
+                          b ~/ 8 + 1,
+                          (index) => Text(
+                                '${index + 1}',
+                              )),
                     ),
                   ),
                 // ),
