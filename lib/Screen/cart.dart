@@ -11,7 +11,7 @@ Widget cart(
   String? url,
   String? title,
   int? episodes,
-  double? score,
+  var score,
   int? year,
   String? genres,
   String? imageg
@@ -86,10 +86,10 @@ Widget cart(
                                   color:
                                       const Color.fromARGB(255, 102, 46, 207),
                                   borderRadius: BorderRadius.circular(5)),
-                              width: 85,
+                              width: 95,
                               height: 25,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text('$episodes Серий',
                                       style: const TextStyle(
@@ -170,7 +170,8 @@ Widget cart(
                             Padding(
                               padding: const EdgeInsets.only(left: 3),
                               child: Text(
-                                '$score',
+                                // 'score',
+                                 '$score',
                                 style: const TextStyle(
                                     color: Color.fromARGB(255, 102, 46, 207),
                                     fontWeight: FontWeight.w700,

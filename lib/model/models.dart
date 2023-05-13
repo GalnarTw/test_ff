@@ -20,7 +20,7 @@ class Data {
   String? url;
   String? title;
   int? episodes;
-  double?  score;
+  var  score;
   int?  year;
   String?genres;
   Images? imagesg;
@@ -41,9 +41,7 @@ this.imagesg,
     episodes = json['episodes'];
     score = json['score'];
     year = json['year'];
-   
-     imagesg =
-        json['images'] != null ? Images.fromJson(json['images']) : null;
+     imagesg = json['images'] != null ? Images.fromJson(json['images']) : null;
 
   }
 }
